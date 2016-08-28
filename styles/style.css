@@ -1,0 +1,114 @@
+
+.page {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  background-color:  #eeeeee;
+  overflow: auto;
+}
+.hide {
+  visibility: hidden;
+}
+.current {
+  z-index: 9;
+}
+.next {
+  z-index: 0;
+}
+
+.flip-box {
+  position: relative;
+  display: inline-block;
+  perspective: 1200px;
+}
+
+div[class*="flip-layer"] {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+
+  transform-style: preserve-3d;
+}
+
+div[class*="sub-layer"] {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  background-color: #eeeeee;
+}
+
+div[class*="-top"] {
+  top: 0;
+  transform-origin: bottom;
+  z-index: 2;
+}
+
+div[class*="-bottom"] {
+  z-index: 1;
+  bottom: 0;
+  transform-origin: top;
+}
+
+div[class*="-front"] {
+  z-index: 2;
+}
+
+div[class*="-back"] {
+  z-index: 1;
+}
+
+.active {
+  z-index: 3 !important;
+}
+
+.sub-layer-back {
+  transform-origin: center;
+  transform: rotateX(180deg);
+}
+
+div[class*='-btn-'] {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 10;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 3px solid rgba(255, 255, 255, .5);
+  border-radius: 50%;
+  text-align: center;
+  transition: background-color .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  color: #ffffff;
+  cursor: pointer;
+}
+div[class*='-btn-']:hover {
+  background-color: rgba(0, 0, 0, .8);
+  border: 3px solid rgba(255, 255, 255, .8);
+  color: #ffffff;
+}
+
+/*上下按钮*/
+.flip-btn-up {
+  bottom: 0;
+}
+.flip-btn-up:after {
+  content: '上';
+  color: #ffffff;
+  line-height: 30px;
+}
+
+.flip-btn-down {
+  top: 0;
+}
+.flip-btn-down:after {
+  content: '下';
+  color: #ffffff;
+  line-height: 30px;
+}
+
